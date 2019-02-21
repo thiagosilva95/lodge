@@ -29,17 +29,14 @@ public class ItemConsumoService {
 	private ItemConsumoRepository itemConsumoRepository;
 	
 	public ItemConsumoDTO criar(ItemConsumoCreateDTO itemConsumoCreate) {
-		LOGGER.info("INSERINDO NOVO ITEM DE CONSUMO: %s".format(Util.convertObjectAsJsonString(itemConsumoCreate)));
+		LOGGER.info("INSERINDO NOVO ITEM DE CONSUMO: " + Util.convertObjectAsJsonString(itemConsumoCreate));
 		try {
-			ItemConsumo itemConsumoToSave = ItemConsumoConverter.fromDTO(itemConsumoCreate);
+			ItemConsumo itemConsumoToSave = ItemConsumoConverter.fromCreateDTO(itemConsumoCreate);
 			ItemConsumo itemConsumoSalvo = this.itemConsumoRepository.save(itemConsumoToSave);
 			return ItemConsumoConverter.toDTO(itemConsumoSalvo);
 		} catch (Exception e) {
-			LOGGER.error("ERRO AO INSERIR ITEM DE CONSUMO");
-			e.printStackTrace();
+			throw e;
 		}
-		
-		return null;
 	}
 
 	public List<ItemConsumo> listar(String descricao, TipoItemConsumoEnum tipo, StatusItemConsumoEnum status) {
