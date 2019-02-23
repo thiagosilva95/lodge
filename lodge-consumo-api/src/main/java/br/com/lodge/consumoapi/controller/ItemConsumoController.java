@@ -33,8 +33,8 @@ public class ItemConsumoController {
 	
 	@PostMapping
 	public ResponseEntity<ItemConsumoDTO> criar(@Valid @RequestBody ItemConsumoCreateDTO itemConsumoCreate) {
-		ItemConsumoDTO lancamentoSalvo = itemConsumoService.criar(itemConsumoCreate);
-		return ResponseEntity.status(HttpStatus.CREATED).body(lancamentoSalvo);
+		ItemConsumoDTO itemConsumoSalvo = itemConsumoService.criar(itemConsumoCreate);
+		return ResponseEntity.status(HttpStatus.CREATED).body(itemConsumoSalvo);
 	}
 	
 	@GetMapping("/{codigo}")

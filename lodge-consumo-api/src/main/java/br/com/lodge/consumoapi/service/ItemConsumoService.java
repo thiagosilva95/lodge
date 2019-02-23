@@ -35,8 +35,11 @@ public class ItemConsumoService {
 			ItemConsumo itemConsumoSalvo = this.itemConsumoRepository.save(itemConsumoToSave);
 			return ItemConsumoConverter.toDTO(itemConsumoSalvo);
 		} catch (Exception e) {
-			throw e;
+			LOGGER.error("ERRO AO INSERIR ITEM DE CONSUMO");
+			e.printStackTrace();
 		}
+		
+		return null;
 	}
 
 	public List<ItemConsumo> listar(String descricao, TipoItemConsumoEnum tipo, StatusItemConsumoEnum status) {

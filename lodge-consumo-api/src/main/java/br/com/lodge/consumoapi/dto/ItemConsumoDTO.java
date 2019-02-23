@@ -9,4 +9,6 @@ public class ItemConsumoDTO {
 
 	private Long codigo;
 	private String descricao;
+	private String tipo;
+	private String descricaoTipo;
 }

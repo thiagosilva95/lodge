@@ -2,6 +2,7 @@ package br.com.lodge.consumoapi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import br.com.lodge.consumoapi.enums.StatusItemConsumoEnum;
@@ -15,6 +16,7 @@ import lombok.Setter;
 public class ItemConsumo {
 	
 	@Id
+	@GeneratedValue
 	private Long codigo;
 	private String descricao;
 	private Double preco;

@@ -14,13 +14,17 @@ public class ItemConsumoConverter {
 	public static ItemConsumo fromCreateDTO(ItemConsumoCreateDTO dto) {
 		ItemConsumo model = new ItemConsumo();
 		model.setDescricao(dto.getDescricao());
-		model.setTipo(TipoItemConsumoEnum.valueOf(dto.getTipo()));
+		model.setTipo(TipoItemConsumoEnum.get(dto.getTipo()));
 		model.setStatus(StatusItemConsumoEnum.INATIVO);
 		return model;
 	}
 	
-	public static ItemConsumoDTO toDTO(ItemConsumo itemConsumoSalvo) {
+	public static ItemConsumoDTO toDTO(ItemConsumo model) {
 		ItemConsumoDTO dto = new ItemConsumoDTO();
+		dto.setCodigo(model.getCodigo());
+		dto.setDescricao(model.getDescricao());
+		dto.setTipo(model.getTipo().getCodigo());
+		dto.setTipo(model.getTipo().getDescricao());
 		return dto;
 	}
 	
